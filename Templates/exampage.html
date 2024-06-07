@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VerifiedHire Quiz</title>
+<style>
+/* Basic CSS styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+/* Hide question initially */
+.question {
+    display: none;
+}
+
+#result {
+    display: none;
+    margin-top: 20px;
+    font-weight: bold;
+}
+h2{
+    text-align: center;
+}
+.submit-btn{
+    width: 100%;
+    background: green;
+    color: white;
+    padding: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.qncont{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    width: 76%;
+    padding: 10px;
+    background: antiquewhite;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+.question input[type="radio"] {
+    margin-right: 5px;
+    transform: scale(1.5);
+    margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="qncont">
+    <center><h1>Verified Hire Endorsement Test</h1></center>
+    <h3 id="result" style="text-align: center;">Your Score: <span id="score">0</span></h3>
+    <br>
+    <center><h5  style="display: none" id="adm">Thanks for taking the test. You will receive your skill updation status in your mail ID once after our admin take action</h5></center>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    let score = 0;
+    let currentQuestion = 1;
+    const totalQuestions = 10;
+    const questions = {
+        "html": [
+        {question: "What does HTML stand for?", options: ["Hypertext Markup Language", "Hyperlinks and Text Markup Language", "Home Tool Markup Language", "Hyper Text Makeup Language"], correct: "a"},
+        {question: "What is the correct HTML element for inserting a line break?", options: ["&lt;br&gt;", "&lt;break&gt;", "&lt;lb&gt;", "&lt;linebreak&gt;"], correct: "a"},
+        {question: "Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?", options: ["alt", "title", "src", "href"], correct: "a"},
+        {question: "What is the correct HTML element for the largest heading?", options: ["&lt;h1&gt;", "&lt;h6&gt;", "&lt;heading&gt;", "&lt;head&gt;"], correct: "a"},
+        {question: "What is the correct HTML for creating a hyperlink?", options: ["&lt;a href='http://example.com'&gt;Example&lt;/a&gt;", "&lt;a url='http://example.com'&gt;Example&lt;/a&gt;", "&lt;a link='http://example.com'&gt;Example&lt;/a&gt;", "&lt;a src='http://example.com'&gt;Example&lt;/a&gt;"], correct: "a"},
+        {question: "Which HTML attribute is used to define inline styles?", options: ["class", "style", "styles", "font"], correct: "b"},
+        {question: "What is the correct HTML element for inserting a line break?", options: ["&lt;br&gt;", "&lt;break&gt;", "&lt;lb&gt;", "&lt;linebreak&gt;"], correct: "a"},
+        {question: "Which HTML tag is used to define an internal style sheet?", options: ["&lt;style&gt;", "&lt;css&gt;", "&lt;script&gt;", "&lt;link&gt;"], correct: "a"},
+        {question: "Which HTML attribute is used to specify a unique identifier for an element?", options: ["id", "class", "name", "key"], correct: "a"},
+        {question: "What is the correct HTML element to define important text?", options: ["&lt;strong&gt;", "&lt;important&gt;", "&lt;i&gt;", "&lt;b&gt;"], correct: "a"}
+    ],
+        "css":  [
+        {question: "What does CSS stand for?", options: ["Creative Style Sheets", "Computer Style Sheets", "Cascading Style Sheets", "Colorful Style Sheets"], correct: "c"},
+        {question: "What does the CSS property 'float' do?", options: ["Moves the element to the left", "Moves the element to the right", "Makes the element transparent", "Specifies how an element should be positioned"], correct: "b"},
+        {question: "Which property is used to change the background color in CSS?", options: ["bgcolor", "color", "background-color", "background"], correct: "c"},
+        {question: "Which CSS property controls the text size?", options: ["font-size", "text-size", "text-style", "font-style"], correct: "a"},
+        {question: "What is the correct CSS syntax to make all the &lt;p&gt; elements bold?", options: ["p {font-weight: bold;}", "p {text-size: bold;}", "p {font: bold;}", "p {font-weight: bolder;}"], correct: "a"},
+        {question: "How do you make each word in a text start with a capital letter in CSS?", options: ["text-transform: capitalize;", "text-transform: uppercase;", "transform: capitalize;", "text-transform: capitalize-words;"], correct: "a"},
+        {question: "Which CSS property is used to change the text color of an element?", options: ["fgcolor", "color", "text-color", "font-color"], correct: "b"},
+        {question: "Which CSS property is used to change the font of an element?", options: ["font-family", "font-style", "font-weight", "font-size"], correct: "a"},
+        {question: "How do you make the text bold in CSS?", options: ["font: bold;", "font-weight: bold;", "text-decoration: bold;", "text-transform: bold;"], correct: "b"},
+        {question: "How do you display a border like this: The top border = 10 pixels, the bottom border = 5 pixels, the left border = 20 pixels, and the right border = 1 pixel?", options: ["border-width: 10px 1px 5px 20px;", "border-width: 10px 20px 5px 1px;", "border-width: 10px 1px 20px 5px;", "border-width: 20px 10px 5px 1px;"], correct: "a"}
+    ],
+        
+        "jquery": [
+        {question: "What is jQuery?", options: ["A programming language", "A JavaScript library", "A database system", "A markup language"], correct: "b"},
+        {question: "Which symbol is used to define jQuery?", options: ["$", "&", "*", "@"], correct: "a"},
+        {question: "Which function is used to select elements in jQuery?", options: ["find()", "get()", "select()", "$()"], correct: "d"},
+        {question: "Which method is used to add a class to an element in jQuery?", options: [".addClass()", ".append()", ".remove()", ".hide()"], correct: "a"},
+        {question: "What is the result of $('p').length in jQuery if there are 5 paragraph elements?", options: ["5", "0", "1", "p"], correct: "a"},
+        {question: "Which method is used to hide an element in jQuery?", options: [".hide()", ".show()", ".toggle()", ".fadeOut()"], correct: "a"},
+        {question: "What is the purpose of $(document).ready() in jQuery?", options: ["To load jQuery library", "To initialize the document", "To execute code when the document is ready", "To select the document element"], correct: "c"},
+        {question: "Which jQuery method is used to set CSS properties of elements?", options: [".css()", ".attr()", ".html()", ".val()"], correct: "a"},
+        {question: "What is the result of $('#myDiv').html('Hello') in jQuery?", options: ["Sets the HTML content of the div to 'Hello'", "Gets the HTML content of the div", "Hides the div element", "Removes the div element"], correct: "a"},
+        {question: "Which method is used to handle events in jQuery?", options: [".on()", ".click()", ".trigger()", ".bind()"], correct: "a"}
+    ],
+
+     "bootstrap": [
+        {question: "What is Bootstrap?", options: ["A front-end framework for developing responsive websites", "A back-end framework", "A database management system", "A JavaScript library"], correct: "a"},
+        {question: "Which class provides a responsive fixed-width container in Bootstrap?", options: [".container", ".container-fluid", ".fixed-container", ".responsive-container"], correct: "a"},
+        {question: "Which Bootstrap class can be used to create a button?", options: [".btn", ".button", ".btn-default", ".button-default"], correct: "a"},
+        {question: "Which class is used to create a large button in Bootstrap?", options: [".btn-lg", ".btn-large", ".btn-big", ".btn-l"], correct: "a"},
+        {question: "Which class adds a white text color to a button in Bootstrap?", options: [".btn-light", ".btn-white", ".btn-clear", ".btn-contrast"], correct: "a"},
+        {question: "What does the class 'col-md-4' specify?", options: ["4 columns on medium devices", "4 columns on small devices", "4 columns on large devices", "4 columns on extra small devices"], correct: "a"},
+        {question: "Which class can be used to create a badge in Bootstrap?", options: [".badge", ".label", ".tag", ".ribbon"], correct: "a"},
+        {question: "Which class is used to style the active item in a list group in Bootstrap?", options: [".active", ".list-group-active", ".list-active", ".item-active"], correct: "a"},
+        {question: "How do you create a basic Bootstrap grid system?", options: [".row and .col", ".grid and .col", ".row and .column", ".grid and .column"], correct: "a"},
+        {question: "Which class adds a heading to a card in Bootstrap?", options: [".card-header", ".card-heading", ".card-title", ".card-top"], correct: "a"}
+    ],
+
+     "ruby": [
+        {question: "What is Ruby?", options: ["A dynamic, open source programming language", "A type of gemstone", "A database system", "A web server"], correct: "a"},
+        {question: "Which symbol is used to define a block of code in Ruby?", options: ["do...end", "{} brackets", "parentheses", "angle brackets"], correct: "a"},
+        {question: "How do you define a method in Ruby?", options: ["def method_name", "function method_name", "method method_name", "define method_name"], correct: "a"},
+        {question: "What is the correct way to create an array in Ruby?", options: ["array = [1, 2, 3]", "array = (1, 2, 3)", "array = {1, 2, 3}", "array = <1, 2, 3>"], correct: "a"},
+        {question: "Which method is used to output text to the screen in Ruby?", options: ["puts", "echo", "print", "console.log"], correct: "a"},
+        {question: "How do you add a comment in Ruby?", options: ["# This is a comment", "// This is a comment", "/* This is a comment */", "-- This is a comment"], correct: "a"},
+        {question: "What is a Ruby gem?", options: ["A package manager", "A type of gemstone", "A syntax error", "A web framework"], correct: "a"},
+        {question: "Which operator is used for equality in Ruby?", options: ["==", "=", "===", "!="], correct: "a"},
+        {question: "How do you create a hash in Ruby?", options: ["hash = {key: 'value'}", "hash = [key: 'value']", "hash = (key: 'value')", "hash = <key: 'value'>"], correct: "a"},
+        {question: "Which keyword is used to define a class in Ruby?", options: ["class", "def", "module", "struct"], correct: "a"}
+    ],
+
+    "python": [
+        {question: "What is Python?", options: ["A high-level programming language", "A type of snake", "A database system", "A web server"], correct: "a"},
+        {question: "How do you print 'Hello, World!' in Python?", options: ["print('Hello, World!')", "echo('Hello, World!')", "console.log('Hello, World!')", "puts('Hello, World!')"], correct: "a"},
+        {question: "Which symbol is used to start a comment in Python?", options: ["#", "//", "'", "--"], correct: "a"},
+        {question: "What is the correct way to create a list in Python?", options: ["mylist = [1, 2, 3]", "mylist = (1, 2, 3)", "mylist = {1, 2, 3}", "mylist = <1, 2, 3>"], correct: "a"},
+        {question: "How do you check the length of a list in Python?", options: ["len(mylist)", "length(mylist)", "size(mylist)", "count(mylist)"], correct: "a"},
+        {question: "What is the result of '3 + 5 * 2' in Python?", options: ["13", "16", "11", "10"], correct: "b"},
+        {question: "Which keyword is used to define a function in Python?", options: ["def", "function", "define", "func"], correct: "a"},
+        {question: "Which method is used to remove an item from a list in Python?", options: [".remove()", ".delete()", ".pop()", ".clear()"], correct: "c"},
+        {question: "What is the correct way to create a dictionary in Python?", options: ["mydict = {'key': 'value'}", "mydict = [key: 'value']", "mydict = (key: 'value')", "mydict = <key: 'value'>"], correct: "a"},
+        {question: "Which operator is used for string concatenation in Python?", options: ["+", "&", "-", "*"], correct: "a"}
+    ],
+
+      "javascript": [
+        {question: "What is JavaScript?", options: ["A scripting language", "A markup language", "A programming language", "A styling language"], correct: "c"},
+        {question: "What symbol is used to declare a single-line comment in JavaScript?", options: ["#", "//", "'", "--"], correct: "b"},
+        {question: "Which keyword is used to declare a variable in JavaScript?", options: ["var", "let", "const", "variable"], correct: "c"},
+        {question: "Which function is used to print output in the console in JavaScript?", options: ["console.log()", "print()", "echo()", "document.write()"], correct: "a"},
+        {question: "What is the result of 5 + '5' in JavaScript?", options: ["10", "55", "NaN", "'55'"], correct: "d"},
+        {question: "Which operator is used for strict equality in JavaScript?", options: ["==", "===", "=", "!"], correct: "b"},
+        {question: "How do you add a comment in JavaScript?", options: ["// This is a comment", "<!-- This is a comment -->", "' This is a comment", "/* This is a comment */"], correct: "a"},
+        {question: "Which function is used to convert a string to an integer in JavaScript?", options: ["parseInt()", "stringToInt()", "toInt()", "convertToInt()"], correct: "a"},
+        {question: "What is the result of typeof null in JavaScript?", options: ["object", "null", "undefined", "string"], correct: "a"},
+        {question: "Which loop is used to iterate over an array in JavaScript?", options: ["for", "while", "foreach", "loop"], correct: "a"}
+    ]
+
+    };
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const subject = urlParams.get('subject') || 'html'; 
+    const endid = urlParams.get('endid'); 
+    const selectedQuestions = questions[subject];
+
+    function renderQuestion(index) {
+        if (index < selectedQuestions.length) {
+            const q = selectedQuestions[index];
+            const optionsHtml = q.options.map((option, i) => {
+                const optionValue = String.fromCharCode(97 + i);
+                return `<input type="radio" name="q${index}" value="${optionValue}"> ${option}<br>`;
+            }).join('');
+
+            return `
+                <div class="question" id="question${index + 1}">
+                    <h2>Question ${index + 1}</h2>
+                    <p>${q.question}</p>
+                    ${optionsHtml}
+                    <button class="submit-btn">Submit</button>
+                </div>
+            `;
+        }
+        return '';
+    }
+
+    for (let i = 0; i < totalQuestions; i++) {
+        $('.qncont').append(renderQuestion(i));
+    }
+
+    $('#question1').show();
+    $('.submit-btn').on('click', function() {
+        const $currentQuestion = $(this).closest('.question');
+        const index = $currentQuestion.attr('id').replace('question', '') - 1;
+        const selectedAnswer = $(`input[name="q${index}"]:checked`).val();
+        
+        if (selectedAnswer === selectedQuestions[index].correct) {
+            score++;
+        }
+
+        $currentQuestion.hide();
+        currentQuestion++;
+        if (currentQuestion <= totalQuestions && currentQuestion <= selectedQuestions.length) {
+            $(`#question${currentQuestion}`).show();
+        } else {
+            $('#score').text(score);
+            $('#result').show();
+            $("#adm").show()
+
+
+            $.ajax({
+                type: 'POST',
+                url: 'updateEmployeeScore',
+                dataType: 'JSON',
+                data: {"score":score, "endid":endid},
+                success: function(response) {
+                    
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+
+
+        }
+    });
+});
+</script>
+
+</body>
+</html>

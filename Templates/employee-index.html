@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Verified Hire</title>
+  <link href="{{ url_for('static', filename='dist/css/tabler.min.css') }}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='dist/css/tabler-flags.min.css') }}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='dist/css/tabler-payments.min.css') }}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='dist/css/tabler-vendors.min.css') }}" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='dist/css/demo.min.css') }}" rel="stylesheet" />
+  <style>
+    @import url('https://rsms.me/inter/inter.css');
+
+    :root {
+      --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    }
+
+    body {
+      font-feature-settings: "cv03", "cv04", "cv11";
+    }
+
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="/static/dist/js/demo-theme.min.js?1684106062"></script>
+  <div class="page">
+    <!-- Navbar -->
+    <header class="navbar navbar-expand-md d-print-none">
+      <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+          aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+          <a href=".">
+            <img src="static/verifiedhirelogo.png" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+          </a>
+        </h1>
+        <div class="navbar-nav flex-row order-md-last">
+          <div class="nav-item d-none d-md-flex me-3">
+            <div class="btn-list">
+
+            </div>
+          </div>
+          <div class="d-none d-md-flex">
+            <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode"
+              data-bs-toggle="tooltip" data-bs-placement="bottom">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+              </svg>
+            </a>
+            <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode"
+              data-bs-toggle="tooltip" data-bs-placement="bottom">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+              </svg>
+            </a>
+
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
+              aria-label="Open user menu">
+              <span class="avatar avatar-sm avatarPreview"
+                style="background-image: url(./static/avatars/000m.jpg)"></span>
+              <div class="d-none d-xl-block ps-2">
+                <div id="profname">Loading...</div>
+                <div class="mt-1 small text-muted">Employee</div>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+              <a href="{{url_for('logout')}}" id="logout" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <header class="navbar-expand-md">
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <div class="navbar">
+          <div class="container-xl">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="./">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                      <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                      <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                    </svg>
+                  </span>
+                  <span class="nav-link-title">
+                    Home
+                  </span>
+                </a>
+              </li>
+
+
+            </ul>
+            <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
+              <form action="./" method="get" autocomplete="off" novalidate>
+                <div class="input-icon">
+                  <span class="input-icon-addon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                      <path d="M21 21l-6 -6" />
+                    </svg>
+                  </span>
+                  <input type="text" value="" class="form-control" placeholder="Search…" aria-label="Search in website">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="page-wrapper">
+      <!-- Page header -->
+      <div class="page-header d-print-none">
+        <div class="container-xl">
+          <div class="row g-2 align-items-center">
+            <div class="col">
+              <!-- Page pre-title -->
+              <div class="page-pretitle">
+                Overview
+              </div>
+              <h2 class="page-title">
+                Employee > Home
+              </h2>
+            </div>
+            <!-- Page title actions -->
+            <div class="col-auto ms-auto d-print-none">
+              <div class="btn-list">
+                <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
+                  data-bs-target="#modal-report" aria-label="Create new report">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 5l0 14" />
+                    <path d="M5 12l14 0" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Page body -->
+      <div class="page-body">
+        <div class="container-xl">
+          <div class="row row-deck row-cards">
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <a href="#tabs-home-7" class="nav-link active" data-bs-toggle="tab" aria-selected="true"
+                        role="tab">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24"
+                          viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                          <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
+                          <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+                          <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
+                        </svg>
+                        My Profile</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a href="#tabs-docs-7" class="nav-link" data-bs-toggle="tab" aria-selected="true" role="tab">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24"
+                          viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                          <path d="M5 12l-2 0l9 -9l9 9l-2 0"></path>
+                          <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+                          <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
+                        </svg>
+                        Documents</a>
+                    </li>
+
+                    <li class="nav-item" role="presentation">
+                      <a href="#tabs-profile-7" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab"
+                        tabindex="-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24"
+                          viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                          <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                          <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                        </svg>
+                        Request Endorsement</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a href="#tabs-history-7" class="nav-link" data-bs-toggle="tab" aria-selected="false" role="tab"
+                        tabindex="-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2" width="24" height="24"
+                          viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                          <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                          <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                        </svg>
+                        Endorsement History</a>
+                    </li>
+
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="tab-pane active show" id="tabs-home-7" role="tabpanel">
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">My Profile</h3>
+                        </div>
+                        <div class="card-body border-bottom py-3">
+                          <div class="row row-cards">
+
+                            <div class="col-md-12">
+                              <div class="row">
+                                <div class="mb-3">
+                                  <div class="row">
+                                    <div class="col-auto">
+
+                                      <label for="imageInput" class="">
+                                        <span class="avatar avatar-md avatarPreview"
+                                          style="background-image: url(./static/avatars/002m.jpg)"></span>
+                                      </label>
+                                      <input type="file" id="imageInput" accept=".png, .jpg, .jpeg"
+                                        style="display: none;">
+
+                                    </div>
+                                    <div class="col">
+                                      <div class="mb-3">
+                                        <label class="form-label">Name</label>
+                                        <input class="form-control" id="username" placeholder="Name" readonly>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" placeholder="Name" id="firstname">
+                                    <span id="nameerror" class="hide text-danger">* Name should not be empty and cannot
+                                      contain numbers</span>
+                                  </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" placeholder="Last Name" id="lastname">
+                                  </div>
+                                </div>
+
+                                <div class="col-sm-4 col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Email address</label>
+                                    <input type="email" readonly class="form-control" placeholder="Email" id="email">
+                                    <span id="emailerror" class="hide text-danger">* Enter valid Email ID</span>
+                                  </div>
+                                </div>
+                                <div class="col-sm-4 col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Phone</label>
+                                    <input type="number" class="form-control" placeholder="Phone" id="phone">
+                                    <span id="phoneerror" class="hide text-danger">* Phone number cannot be les than 10
+                                      and should not exceed 12</span>
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <div class="mb-3">
+                                    <label class="form-label">Address</label>
+                                    <textarea class="form-control" placeholder="Home Address" id="address"></textarea>
+                                    <span id="addresserror" class="hide text-danger">* Enter valid address</span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row row-cards">
+                                <u>
+                                  <h3 class="card-title mt-3">Career (Profile)</h3>
+                                </u>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Organization Name</label>
+                                    <input type="text" class="form-control" placeholder="Organization Name"
+                                      id="orgname">
+
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Designation</label>
+                                    <input type="text" class="form-control" placeholder="Designation" id="designation">
+
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Responsibility</label>
+                                    <input type="text" class="form-control" placeholder="Responsibility"
+                                      id="responsibility">
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Salary(LPA)</label>
+                                    <input type="number" class="form-control" placeholder="Salary" id="salary">
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">City</label>
+                                    <input type="text" class="form-control" placeholder="City" id="orgcity">
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Total No. Of Experience (Yrs)</label>
+                                    <input type="text" class="form-control" placeholder="Experience" id="expyears">
+
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="col-md-12">
+                                <div class="mb-3">
+                                  <label class="form-label">Skills</label>
+                                  <textarea readonly class="form-control" placeholder="Skills" id="skills"></textarea>
+                                  <span id="skillserror" class="hide text-danger">* Enter valid Skills</span>
+                                </div>
+                              </div>
+
+                              <div class="row row-cards">
+                                <u>
+                                  <h3 class="card-title mt-3">Academic Profile (Latest)</h3>
+                                </u>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">College Name</label>
+                                    <input type="text" class="form-control" placeholder="College Name" id="collegename">
+                                    <span id="collegenameerror" class="hide text-danger">* Enter valid college
+                                      name</span>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Course</label>
+                                    <input type="text" class="form-control" placeholder="Course" id="course">
+                                    <span id="courseerror" class="hide text-danger">* Enter valid course</span>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Score</label>
+                                    <input type="number" class="form-control" placeholder="Score" id="score">
+                                    <span id="scoreerror" class="hide text-danger">* Enter valid score or grade</span>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Affilated University</label>
+                                    <input type="text" class="form-control" placeholder="Affilated University"
+                                      id="affilateduniversity">
+                                    <span id="affilateduniversityerror" class="hide text-danger">* Enter valid
+                                      university name</span>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">Academic Year</label>
+                                    <input type="number" class="form-control" placeholder="Academic Year"
+                                      id="academicyear">
+                                    <span id="academicyearerror" class="hide text-danger">* Enter valid academic
+                                      year</span>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="mb-3">
+                                    <label class="form-label">City</label>
+                                    <input type="text" class="form-control" placeholder="City" id="colcity">
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-footer text-start">
+                          <button type="button" id="updateemployeebutton" class="btn btn-primary">Update
+                            Profile</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="tabs-profile-7" role="tabpanel">
+                      <h4>Endorsement</h4>
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Endorsement Request</h3>
+                        </div>
+                        <div class="card-body border-bottom py-3">
+                          <div class="row row-cards">
+                            <div class="col-md-6">
+                              <div class="mb-3">
+                                <label class="form-label">Select Skill</label>
+                                <select type="text" class="form-select" id="endoskill">
+                                  <option value="javascript">JavaScript</option>
+                                  <option value="css">CSS</option>
+                                  <option value="jquery">jQuery</option>
+                                  <option value="bootstrap">Bootstrap</option>
+                                  <option value="ruby">Ruby</option>
+                                  <option value="python">Python</option>
+                                  <option value="html">HTML</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="mb-3">
+                                <label class="form-label">Describe Request</label>
+                                <textarea id="describe" class="form-control" rows="5"
+                                  placeholder="I need to update the skill in the system"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-footer text-start">
+                          <button type="button" id="endorestbutton" class="btn btn-primary">Send Request</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="tab-pane" id="tabs-docs-7" role="tabpanel">
+
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h3 class="card-title">Your Documents</h3>
+                          </div>
+                          <div class="card-body border-bottom py-3">
+                            <div class="row row-cards">
+
+                              <!-- MAIN CONTENT HERE -->
+
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="mb-3">
+                                    <label for="documentName" class="form-label">Type</label>
+                                    <select class="form-select" id="documentType">
+                                      <option value="0">Select Document Type</option>
+                                      <option value="aadhaar">Aadhaar Card</option>
+                                      <option value="pan">PAN Card</option>
+                                      <option value="10th">UP Board High School</option>
+                                      <option value="12th">UP Board Intermediate</option>
+                                      <option value="resume">Resume</option>
+                                      <option value="experience">Experience Letter</option>
+                                      <option value="other">Other</option>
+                                    </select>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-6" id="district_div">
+                                  <div class="mb-3">
+                                    <label for="district" class="form-label">District.</label>
+                                    <select class="form-select" id="district">
+                                      <option value="01" data-tokens="01">AGRA - 01</option>
+                                      <option value="06" data-tokens="06">ALIGARH - 06</option>
+                                      <option value="64" data-tokens="64">AMBEDKAR NAGAR - 64</option>
+                                      <option value="65" data-tokens="65">AMETHI - 65</option>
+                                      <option value="22" data-tokens="22">AMROHA - 22</option>
+                                      <option value="43" data-tokens="43">AURIYA - 43</option>
+                                      <option value="62" data-tokens="62">AYODHYA - 62</option>
+                                      <option value="80" data-tokens="80">AZAMGARH - 80</option>
+                                      <option value="13" data-tokens="13">BAGPAT - 13</option>
+                                      <option value="66" data-tokens="66">BAHRAICH - 66</option>
+                                      <option value="82" data-tokens="82">BALLIA - 82</option>
+                                      <option value="69" data-tokens="69">BALRAMPUR - 69</option>
+                                      <option value="51" data-tokens="51">BANDA - 51</option>
+                                      <option value="63" data-tokens="63">BARABANKI - 63</option>
+                                      <option value="26" data-tokens="26">BAREILLY - 26</option>
+                                      <option value="71" data-tokens="71">BASTI - 71</option>
+                                      <option value="88" data-tokens="88">BHADOHI - 88</option>
+                                      <option value="23" data-tokens="23">BIJNOR - 23</option>
+                                      <option value="27" data-tokens="27">BUDAUN - 27</option>
+                                      <option value="09" data-tokens="09">BULANDSHAHR - 09</option>
+                                      <option value="86" data-tokens="86">CHANDAULI - 86</option>
+                                      <option value="52" data-tokens="52">CHITRAKOOT - 52</option>
+                                      <option value="77" data-tokens="77">DEORIA - 77</option>
+                                      <option value="04" data-tokens="04">ETAH - 04</option>
+                                      <option value="41" data-tokens="41">ETAWAH - 41</option>
+                                      <option value="40" data-tokens="40">FARRUKHABAD - 40</option>
+                                      <option value="56" data-tokens="56">FATEHPUR - 56</option>
+                                      <option value="02" data-tokens="02">FIROZABAD - 02</option>
+                                      <option value="11" data-tokens="11">GAUTAM BUDH NAGAR - 11</option>
+                                      <option value="10" data-tokens="10">GHAZIABAD - 10</option>
+                                      <option value="84" data-tokens="84">GHAZIPUR - 84</option>
+                                      <option value="68" data-tokens="68">GONDA - 68</option>
+                                      <option value="75" data-tokens="75">GORAKHPUR - 75</option>
+                                      <option value="49" data-tokens="49">HAMIRPUR - 49</option>
+                                      <option value="14" data-tokens="14">HAPUR - 14</option>
+                                      <option value="33" data-tokens="33">HARDOI - 33</option>
+                                      <option value="07" data-tokens="07">HATHRAS - 07</option>
+                                      <option value="45" data-tokens="45">JALAUN - 45</option>
+                                      <option value="83" data-tokens="83">JAUNPUR - 83</option>
+                                      <option value="47" data-tokens="47">JHANSI - 47</option>
+                                      <option value="42" data-tokens="42">KANNAUJ - 42</option>
+                                      <option value="39" data-tokens="39">KANPUR DEHAT - 39</option>
+                                      <option value="38" data-tokens="38">KANPUR NAGAR - 38</option>
+                                      <option value="08" data-tokens="08">KASGANJ - 08</option>
+                                      <option value="57" data-tokens="57">KAUSHAMBI - 57</option>
+                                      <option value="78" data-tokens="78">KUSHINAGAR - 78</option>
+                                      <option value="31" data-tokens="31">LAKHIMPUR KHIRI - 31</option>
+                                      <option value="48" data-tokens="48">LALITPUR - 48</option>
+                                      <option value="34" data-tokens="34">LUCKNOW - 34</option>
+                                      <option value="76" data-tokens="76">MAHARAJGANJ - 76</option>
+                                      <option value="50" data-tokens="50">MAHOBA - 50</option>
+                                      <option value="03" data-tokens="03">MAINPURI - 03</option>
+                                      <option value="05" data-tokens="05">MATHURA - 05</option>
+                                      <option value="81" data-tokens="81">MAU - 81</option>
+                                      <option value="12" data-tokens="12">MEERUT - 12</option>
+                                      <option value="89" data-tokens="89">MIRZAPUR - 89</option>
+                                      <option value="21" data-tokens="21">MORADABAD - 21</option>
+                                      <option value="15" data-tokens="15">MUZAFFAR NAGAR - 15</option>
+                                      <option value="29" data-tokens="29">PILIBHIT - 29</option>
+                                      <option value="54" data-tokens="54">PRATAPGARH - 54</option>
+                                      <option value="55" data-tokens="55">PRAYAGRAJ - 55</option>
+                                      <option value="36" data-tokens="36">RAE BARAILI - 36</option>
+                                      <option value="24" data-tokens="24">RAMPUR - 24</option>
+                                      <option value="25" data-tokens="25">SAMBHAL - 25</option>
+                                      <option value="72" data-tokens="72">SANT KABIR NAGAR - 72</option>
+                                      <option value="16" data-tokens="16">SHAHARANPUR - 16</option>
+                                      <option value="28" data-tokens="28">SHAHJAHANPUR - 28</option>
+                                      <option value="17" data-tokens="17">SHAMLI - 17</option>
+                                      <option value="67" data-tokens="67">SHRAWASTI - 67</option>
+                                      <option value="73" data-tokens="73">SIDDHARTA NAGAR - 73</option>
+                                      <option value="32" data-tokens="32">SITAPUR - 32</option>
+                                      <option value="90" data-tokens="90">SONBHADRA - 90</option>
+                                      <option value="61" data-tokens="61">SULTANPUR - 61</option>
+                                      <option value="35" data-tokens="35">UNNAO - 35</option>
+                                      <option value="85" data-tokens="85">VARANASI - 85</option>
+                                    </select>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-6" id="passing_year_div">
+                                  <div class="mb-3">
+                                    <label for="passing_year" class="form-label">Passing Year</label>
+                                    <select class="form-select" id="passing_year">
+                                      <option value="2023">2023</option>
+                                      <option value="2022">2022</option>
+                                      <option value="2021">2021</option>
+                                      <option value="2020">2020</option>
+                                      <option value="2019">2019</option>
+                                      <option value="2018">2018</option>
+                                      <option value="2017">2017</option>
+                                      <option value="2016">2016</option>
+                                      <option value="2015">2015</option>
+                                      <option value="2014">2014</option>
+                                      <option value="2013">2013</option>
+                                      <option value="2012">2012</option>
+                                      <option value="2011">2011</option>
+                                      <option value="2010">2010</option>
+                                      <option value="2009">2009</option>
+                                      <option value="2008">2008</option>
+                                      <option value="2007">2007</option>
+                                      <option value="2006">2006</option>
+                                      <option value="2005">2005</option>
+                                      <option value="2004">2004</option>
+                                      <option value="2003">2003</option>
+                                    </select>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-6" id="rollno_div">
+                                  <div class="mb-3">
+                                    <label for="rollno" class="form-label">Roll No.</label>
+                                    <input type="text" class="form-control" id="rollno">
+                                  </div>
+                                </div>
+
+                                <div class="col-md-6" id="panno_div">
+                                  <div class="mb-3">
+                                    <label for="panno" class="form-label">Pan Card No.</label>
+                                    <input type="text" class="form-control" id="panno">
+                                  </div>
+                                </div>
+
+                                <div class="col-md-6" id="upload_div">
+                                  <div class="mb-3">
+                                    <label for="upload_file" class="form-label">Upload File.</label>
+                                    <input type="file" class="form-control" id="upload_file">
+                                  </div>
+                                </div>
+
+
+                              </div>
+                              <button type="button" onclick="addDoc()" class="btn btn-primary">Add Document</button>
+
+
+                            </div>
+
+                            <div class="row row-cards mt-3">
+                              <div class="col-12">
+                                <div class="card">
+                                  <div class="table-responsive">
+                                    <table class="table table-vcenter table-mobile-md card-table">
+                                      <thead>
+                                        <tr>
+                                          <th>Document Name</th>
+                                          <th>is Verified</th>
+                                          <th>Verified By</th>
+                                          <th>Action</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody id="docdetail">
+
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="tab-pane" id="tabs-history-7" role="tabpanel">
+                      <h4>Endorsement History</h4>
+                      <div class="card">
+                        <div class="table-responsive">
+                          <table class="table table-vcenter table-mobile-md card-table">
+                            <thead>
+                              <tr>
+                                <th>Requested Endorse</th>
+                                <th>Score</th>
+                                <th>Status</th>
+                                <th>Has updated</th>
+                                <th>Requested Date</th>
+                              </tr>
+                            </thead>
+                            <tbody id="endordetail">
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" id="fname">
+
+
+    <!-- Libs JS -->
+    <script src="{{ url_for('static', filename='dist/libs/apexcharts/dist/apexcharts.min.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='dist/libs/jsvectormap/dist/js/jsvectormap.min.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='dist/libs/jsvectormap/dist/maps/world.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='dist/libs/jsvectormap/dist/maps/world-merc.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='jsvalidations/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='dist/js/tabler.min.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='dist/js/demo.min.js') }}" defer></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+
+        let filename = ''
+        $('#imageInput').change(function (event) {
+          var file = event.target.files[0];
+          filename = file.name;
+          $("#fname").val(filename)
+          if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $('.avatarPreview').css('background-image', 'url(' + e.target.result + ')');
+            }
+
+            var formData = new FormData();
+            var sendfile = $('#imageInput')[0].files[0];
+            formData.append('image', sendfile);
+
+            $.ajax({
+              type: 'POST',
+              url: '/uploaddp',
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+
+              },
+              error: function (xhr, status, error) {
+
+              }
+            });
+
+            reader.readAsDataURL(file);
+          }
+        });
+
+        $.ajax({
+          url: "/getemployeeData",
+          type: "post",
+          dataType: 'json',
+          data: {},
+          beforeSend: function () {
+
+          },
+          success: function (output) {
+
+            $("#username").val(output.employee_data[0])
+            $("#profname").html(output.employee_data[0])
+            $('#firstname').val(output.basic_info[0])
+            $('#lastname').val(output.basic_info[1])
+            $('#email').val(output.employee_data[1])
+            $('#phone').val(output.employee_data[3])
+            $('#address').val(output.basic_info[4])
+
+            $('#orgname').val(output.working_info[1])
+            $('#designation').val(output.working_info[2])
+            $('#responsibility').val(output.working_info[3])
+            $('#salary').val(output.working_info[4])
+            $('#orgcity').val(output.working_info[5])
+            $('#expyears').val(output.working_info[6])
+            $('#skills').val(output.working_info[7])
+
+            $('#collegename').val(output.academic_info[1])
+            $('#course').val(output.academic_info[2])
+            $('#score').val(output.academic_info[3])
+            $('#affilateduniversity').val(output.academic_info[4])
+            $('#colcity').val(output.academic_info[5])
+            $('#academicyear').val(output.academic_info[6])
+
+            var url = '/static/profileimages/'+output.basic_info[5]
+              console.log(url)
+              $('.avatarPreview').css('background-image', 'url(' + encodeURI(url) + ')');
+
+            var endor = ''
+            for (var i = 0; i <= output.endor_info.length - 1; i++) {
+              if (output.endor_info[i][5] == 'none') {
+                var stat = '<span class="badge bg-yellow text-yellow-fg">Pending</span>'
+              } else {
+                var stat = '<span class="badge bg-red text-red-fg">Rejected</span>'
+              }
+              endor += `<tr><td>` + output.endor_info[i][2] + `</td>
+                    <td>`+ output.endor_info[i][4] + `</td>
+                    <td>`+ stat + `</td>
+                    <td>`+ output.endor_info[i][6] + `</td>
+                    <td>`+ output.endor_info[i][7] + `</td>`;
+            }
+
+            $("#endordetail").html(endor)
+
+
+            docs = output.proof_info;
+            for (var i = 0; i <= output.proof_info.length - 1; i++) {
+              var doc = ''
+              if (output.proof_info[i][6] == false) {
+                var stat = '<span class="badge bg-yellow text-yellow-fg">Pending</span>'
+              } else {
+                var stat = '<span class="badge bg-green text-green-fg">Verified</span>'
+              }
+              doc += `<tr><td>` + output.proof_info[i][0] + `</td>
+                    <td>`+ stat + `</td>
+                    <td>`+ output.proof_info[i][5] + `</td>
+                    <td><button class="btn btn-primary" onclick="displayDocDetails('` + i + `')">View</button></td></tr>`;
+              $("#docdetail").append(doc)
+            }
+
+
+          },
+          error: function (error) {
+
+          }
+        });
+
+
+        $("#updateemployeebutton").click(function () {
+
+          $(".invalid-feedback").text("");
+          $("#firstname, #lastname, #email, #phone, #employeeaddress, #organizationname, #designation, #responsibility, #salary, #officecity, #totalexperience, #collegename, #course, #score, #affilateduniversity, #colcity, #academicyear, #fname").removeClass("is-invalid");
+          var isValid = true;
+          var mandatoryFields = ["firstname", "lastname", "email", "phone", "employeeaddress", "organizationname", "designation", "responsibility", "salary", "officecity", "totalexperience", "collegename", "course", "score", "affilateduniversity", "colcity", "academicyear"];
+          mandatoryFields.forEach(function (fieldId) {
+            var fieldValue = $('#' + fieldId).val();
+            if (fieldValue == "") {
+              $('#' + fieldId).addClass("is-invalid");
+              $('#' + fieldId).siblings(".invalid-feedback").text("This field is required");
+              isValid = false;
+            }
+          });
+
+          if (!isValid) {
+            return false;
+          }
+
+          var formData = {
+            firstName: $('#firstname').val(),
+            lastName: $('#lastname').val(),
+            email: $('#email').val(),
+            phone: $('#phone').val(),
+            employeeaddress: $('#address').val(),
+            organizationname: $('#orgname').val(),
+            designation: $('#designation').val(),
+            responsibility: $('#responsibility').val(),
+            salary: $('#salary').val(),
+            officecity: $('#orgcity').val(),
+            totalexperience: $('#expyears').val(),
+            collegename: $('#collegename').val(),
+            course: $('#course').val(),
+            score: $('#score').val(),
+            university: $('#affilateduniversity').val(),
+            collegecity: $('#colcity').val(),
+            year: $('#academicyear').val(),
+            filename: $('#fname').val()
+          };
+          $.ajax({
+            type: 'POST',
+            url: '/addEmployee',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function (response) {
+              alert(response.message);
+            },
+            error: function (xhr, status, error) {
+              console.error(xhr.responseText);
+            }
+          });
+        });
+
+
+        $("#endorestbutton").click(function () {
+          var endoskill = $('#endoskill').val()
+          var describe = $('#describe').val()
+          if (endoskill != '' && describe != '') {
+            $('#describe').addClass('is-valid');
+            $.ajax({
+              type: 'POST',
+              url: 'requestEndorest',
+              dataType: 'JSON',
+              data: { "endoskill": endoskill, "describe": describe },
+              success: function (response) {
+                alert("Endorsement requested successfully")
+                location.href = 'employeeindex'
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              }
+            });
+          } else {
+            $('#describe').addClass('is-invalid').focus();
+          }
+        })
+
+      })
+
+    </script>
+
+
+
+
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Document Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- <pre id="doc_res"></pre> -->
+            
+            <div id="doc_res2"></div>
+          </div>
+          <div class="modal-footer" id="doc_btn_save_hide">
+            <button type="button" class="btn btn-primary" onclick="saveDoc()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input type="hidden" id="fname">
+
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+
+        var document_json = null;
+        $("#district_div").hide();
+        $("#passing_year_div").hide();
+        $("#rollno_div").hide();
+        $("#panno_div").hide();
+        $("#upload_div").hide();
+
+
+        $("#documentType").on('change', function () {
+          document_json = null;
+          $("#district_div").hide();
+          $("#passing_year_div").hide();
+          $("#rollno_div").hide();
+          $("#panno_div").hide();
+          $("#upload_div").hide();
+
+          if ($(this).val() == "10th" || $(this).val() == "12th") {
+            $("#district_div").show();
+            $("#passing_year_div").show();
+            $("#rollno_div").show();
+          } else if ($(this).val() == "pan") {
+            $("#panno_div").show();
+          } else if ($(this).val() != 0) {
+            $("#upload_div").show();
+          }
+
+
+        })
+      })
+
+
+      function addDoc() {
+        document_json = null;
+        var documentType = $("#documentType").val();
+        var district = $("#district").val();
+        var passing_year = $("#passing_year").val();
+        var rollno = $("#rollno").val();
+        var panno = $("#panno").val();
+        var upload = $("#upload_file")[0].files[0];
+
+        if (documentType == 0) {
+          alert("Please select document type");
+          return;
+        }
+
+        if (documentType == "10th" || documentType == "12th") {
+          if (district == 0) {
+            alert("Please select district");
+            return;
+          }
+
+          if (passing_year == 0) {
+            alert("Please select passing year");
+            return;
+          }
+
+          if (rollno == '') {
+            alert("Please enter roll no.");
+            return;
+          }
+        }
+
+        if (documentType == "pan") {
+          if (panno == '') {
+            alert("Please enter pan no.");
+            return;
+          }
+        }
+
+        if (documentType != 0) {
+          if (upload == '') {
+            alert("Please upload document");
+            return;
+          }
+        }
+
+        var formData = {
+          document_type: documentType,
+          district: district,
+          passing_year: passing_year,
+          roll_number: rollno,
+          panno: panno,
+          upload: upload
+        };
+
+        $.ajax({
+          url: '/fetchDocumentUsingAPI',
+          type: 'POST',
+          data: JSON.stringify(formData),
+          contentType: 'application/json',
+          success: function (data) {
+            //$("#doc_res").text(JSON.stringify(data, null, 2));
+            $("#doc_res2").html(
+              parseJsonToBootstrapHtml(JSON.stringify(data, null, 2))
+            );
+            document_json = data;
+
+            $('#myModal').modal('show');
+          },
+          error: function (data) {
+            alert("Error ::::  " + data.responseJSON.detail);
+          }
+        })
+      }
+
+      function saveDoc(){
+        if(document_json != null){
+          var Titles = {
+            "10th": "10th Marksheet",
+            "12th": "12th Marksheet",
+            "pan": "PAN Card",
+            "aadhaar": "Aadhaar Card",
+            "passport": "Passport",
+            "resume": "Resume",
+            "experience": "Experience Certificate",
+            "other": "Other Documents"
+          }
+          var doc_types = {
+            "10th": 0,
+            "12th": 0,
+            "pan": 1,
+            "aadhaar": 1,
+            "passport": 1,
+            "resume": 2,
+            "experience": 2,
+            "other": 2
+          }
+          var data = {
+            "document_type": doc_types[$("#documentType").val()],
+            "title" : Titles[$("#documentType").val()],
+            "document_id" : "9999",
+            "file_name" : "",
+            "file_url" : "",
+            "json_data" : document_json,
+            "verified_by": "System",
+            "date": (new Date).getTime()
+          }
+          $.ajax({
+            url: '/addDocument',
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (data) {
+              alert(data.detail);
+              $('#myModal').modal('hide');
+              location.reload();
+            },
+            error: function (data) {
+              alert("Error ::::  " + data.responseJSON.detail);
+            }
+          })
+        }
+      }
+
+
+      var docs = null;
+      function displayDocDetails(i){
+        var html = parseJsonToBootstrapHtml(docs[i][4]);
+        $("#doc_res2").html(html);
+        $('#myModal').modal('show');
+      }
+      function parseJsonToBootstrapHtml(jsonData) {
+        const data = JSON.parse(jsonData);
+
+        // Helper function to create a table from a 2D array
+        function createTable(header, data) {
+          let table = '<table class="table table-bordered"><thead><tr>';
+          header.forEach(col => {
+            table += `<th>${col}</th>`;
+          });
+          table += '</tr></thead><tbody>';
+          data.forEach(row => {
+            table += '<tr>';
+            row.forEach(cell => {
+              table += `<td>${cell !== null ? cell : ''}</td>`;
+            });
+            table += '</tr>';
+          });
+          table += '</tbody></table>';
+          return table;
+        }
+
+        // Function to handle PAN_CARD type
+        function renderPanCard(data) {
+          return `
+                <div class="card">
+                    <div class="card-header">
+                        PAN Card Details
+                    </div>
+                    <div class="card-body">
+                        <p><strong>First Name:</strong> ${data.name.firstName}</p>
+                        <p><strong>Last Name:</strong> ${data.name.lastName}</p>
+                        <p><strong>PAN Number:</strong> ${data.name.panNumber}</p>
+                        <p><strong>PAN Status:</strong> ${data.name.panStatus}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to handle HS_MARKSHEET and SS_MARKSHEET types
+        function renderMarksheet(data) {
+          const marks = data.MARKS[0];
+          const table = createTable(marks.TABLE.HEADER, marks.TABLE.DATA);
+          return `
+                <div class="card">
+                    <div class="card-header">
+                        Marksheet Details
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Board/University:</strong> ${data.BOARD_UNIVERSITY}</p>
+                        <p><strong>Class:</strong> ${data.CLASS}</p>
+                        <p><strong>District Code:</strong> ${data.DIST_CODE}</p>
+                        <p><strong>Date of Birth:</strong> ${data.DOB !== null ? data.DOB : 'N/A'}</p>
+                        <p><strong>Document Type:</strong> ${data.DOCUMENT_TYPE}</p>
+                        <p><strong>Father's Name:</strong> ${data.FATHER}</p>
+                        <p><strong>Mother's Name:</strong> ${data.MOTHER}</p>
+                        <p><strong>Student's Name:</strong> ${data.NAME}</p>
+                        <p><strong>Result Type:</strong> ${data.RESULT_TYPE}</p>
+                        <p><strong>Roll Number:</strong> ${data.ROLL}</p>
+                        <p><strong>School Code:</strong> ${data.SCHOOL_CODE}</p>
+                        <p><strong>Stream:</strong> ${data.STREAM !== null ? data.STREAM : 'N/A'}</p>
+                        ${table}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Main rendering logic
+        let htmlContent = '';
+        if (data.DOCUMENT_TYPE === 'PAN_CARD') {
+          htmlContent = renderPanCard(data);
+        } else if (data.data && (data.data.DOCUMENT_TYPE === 'HS_MARKSHEET' || data.data.DOCUMENT_TYPE === 'SS_MARKSHEET')) {
+          htmlContent = renderMarksheet(data.data);
+        }
+
+        return htmlContent;
+      }
+    </script>
+
+</body>
+
+</html>

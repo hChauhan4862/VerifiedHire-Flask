@@ -1,0 +1,109 @@
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Verified Hire</title>
+    <link href="{{ url_for('static', filename='dist/css/tabler.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='dist/css/tabler-flags.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='dist/css/tabler-payments.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='dist/css/tabler-vendors.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='dist/css/demo.min.css') }}" rel="stylesheet">
+
+    <style>
+      @import url('https://rsms.me/inter/inter.css');
+      :root {
+        --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+      }
+      body {
+        font-feature-settings: "cv03", "cv04", "cv11";
+      }
+      .hide{
+        display: none;
+      }
+      .text-danger{
+        font-size: 11px;
+        margin-top: 6px;
+      }
+    </style>
+  </head>
+  <body  class=" d-flex flex-column">
+   
+    <script src="{{ url_for('static', filename='dist/js/demo-theme.min.js?1684106062') }}"></script>
+
+    <div class="page page-center">
+      <div class="container container-tight py-4">
+        <div class="text-center mb-4">
+          <a href="." class="navbar-brand navbar-brand-autodark"><img src="static/verifiedhirelogo.png" height="36" alt=""></a>
+
+        </div>
+        <form class="card card-md" action="./" method="get" autocomplete="off" novalidate>
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Employee Signup</h2>
+             <center><span class="text-center" id="message"></span></center>
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" placeholder="Enter name" id="name">
+              <span id="nameerror" class="text-danger hide">* Name should not be empty and cannot contain numbers</span>
+            </div>
+
+
+            <div class="mb-3">
+              <label class="form-label">Gender</label>
+              <select class="form-select" id="gender">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email address</label>
+              <input type="email" class="form-control" placeholder="Enter email" id="email">
+              <span id="emailerror" class="text-danger hide">* Enter valid email Id</span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <div class="input-group input-group-flat">
+                <input type="password" class="form-control"  placeholder="Password"   id="password">
+                
+              </div>
+              <span id="passworderror" class="text-danger hide">* Enter valid password. Password should contain alphabets, special charecters and numbers</span>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone</label>
+              <input type="number" class="form-control" placeholder="Phone" id="phone">
+              <span id="phoneerror" class="text-danger hide">* Phone number cannot be les than 10 and should not exceed 12</span>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Aadhaar</label>
+              <input type="number" class="form-control" placeholder="Aadhaar No." id="aadhaar">
+              <span id="aadhaarerror" class="text-danger hide">* Aadhaar No should be equal to 12 digits</span>
+            </div>
+
+            <div class="mb-3 hide" id="otpfield">
+              <label class="form-label">OTP</label>
+              <input type="text" class="form-control" placeholder="OTP" id="otp">
+              <span id="otperror" class="text-warning">* Check your mail for the OTP</span>
+            </div>
+            
+            <div class="form-footer">
+              <button type="button" id="employeesignupbutton" class="btn btn-primary w-100">Create new account</button>
+            </div>
+          </div>
+        </form>
+        <div class="text-center text-muted mt-3">
+          Already have account? <a href="{{ url_for('employeelogin') }}" tabindex="-1">Sign in</a> or Go <a href="{{ url_for('main') }}">Home</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='dist/js/tabler.min.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='dist/js/demo.min.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='jsvalidations/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='jsvalidations/signupvalidations.js') }}"></script>
+
+  </body>
+</html>
